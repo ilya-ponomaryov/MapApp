@@ -6,7 +6,9 @@ import android.view.Menu
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.mapapp.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val navigation: NavController
