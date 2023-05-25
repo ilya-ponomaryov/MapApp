@@ -1,9 +1,10 @@
-package com.example.mapapp
+package com.example.mapapp.common.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.mapapp.R
 
 class MainActivity : AppCompatActivity() {
 

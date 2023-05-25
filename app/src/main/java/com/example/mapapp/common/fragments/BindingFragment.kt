@@ -1,4 +1,4 @@
-package com.example.mapapp
+package com.example.mapapp.common.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
