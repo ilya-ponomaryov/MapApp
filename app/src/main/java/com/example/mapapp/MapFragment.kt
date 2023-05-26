@@ -56,6 +56,6 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
     }
 
     override fun onToolbarMenuItemClicked(item: MenuItem) {
-        navigation.navigate(R.id.coordinatesDialogFragment)
+        navigation.navigate(R.id.action_mapFragment_to_coordinatesDialogFragment)
     }
 }
