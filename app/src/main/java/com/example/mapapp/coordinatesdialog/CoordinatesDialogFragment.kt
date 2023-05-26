@@ -1,4 +1,4 @@
-package com.example.mapapp
+package com.example.mapapp.coordinatesdialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
