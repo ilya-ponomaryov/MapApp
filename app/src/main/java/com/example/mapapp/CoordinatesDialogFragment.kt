@@ -22,4 +22,19 @@ class CoordinatesDialogFragment : DialogFragment() {
         _binding = view
         return view.root
     }
+
+    override fun onResume() {
+        super.onResume()
+        dialog?.window?.apply {
+            val params = attributes
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT
+            params.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = params
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

@@ -10,4 +10,8 @@
         android:name="com.example.mapapp.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
+    <dialog
+        android:id="@+id/coordinatesDialogFragment"
+        android:name="com.example.mapapp.CoordinatesDialogFragment"
+        android:label="CoordinatesDialogFragment" />
 </navigation>
