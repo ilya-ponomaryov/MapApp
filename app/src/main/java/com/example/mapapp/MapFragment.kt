@@ -25,6 +25,9 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
     }
 
     private fun setupMap() = with(binding) {
+        val cursorView = CursorView(requireContext())
+        mapView.addView(cursorView)
+
         mapView.map.move(
             //Уточнить по поводу координат
             CameraPosition(Point(59.945933, 30.320045), 11.0f, 0.0f, 0.0f),
