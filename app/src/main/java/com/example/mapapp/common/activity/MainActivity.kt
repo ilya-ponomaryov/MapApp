@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.mapapp.R
+import com.example.mapapp.common.ToolbarMenuClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,12 +29,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        val navHostFragment: Fragment? =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+
+        return when (item.itemId) {
             R.id.save_coordinates -> {
-                navigation.navigate(R.id.coordinatesDialogFragment)
-                return true
+                val mapFragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
+                if (mapFragment is ToolbarMenuClickListener) {
+                    mapFragment.onToolbarMenuItemClicked(item)
+                }
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

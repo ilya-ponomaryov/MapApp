@@ -1,7 +1,11 @@
 package com.example.mapapp
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import com.example.mapapp.common.ToolbarMenuClickListener
 import com.example.mapapp.common.fragments.BindingFragment
 import com.example.mapapp.databinding.FragmentMapBinding
 import com.yandex.mapkit.Animation
@@ -13,7 +17,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MapFragment : BindingFragment<FragmentMapBinding>(
     FragmentMapBinding::inflate
-) {
+), ToolbarMenuClickListener {
+
+    private lateinit var navigation: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MapKitFactory.initialize(context)
@@ -21,6 +27,7 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navigation = findNavController()
         setupMap()
     }
 
@@ -46,5 +53,9 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
         super.onStop()
         MapKitFactory.getInstance().onStop()
         binding.mapView.onStop()
+    }
+
+    override fun onToolbarMenuItemClicked(item: MenuItem) {
+        navigation.navigate(R.id.coordinatesDialogFragment)
     }
 }
