@@ -2,4 +2,8 @@
     <string name="app_name">MapApp</string>
     <string name="save_coordinates">Сохранить координаты</string>
     <string name="points_list">Список точек</string>
+    <string name="coordinates">Координаты</string>
+    <string name="latitude">Широта</string>
+    <string name="longitude">Долгота</string>
+    <string name="save">Сохранить</string>
 </resources>
