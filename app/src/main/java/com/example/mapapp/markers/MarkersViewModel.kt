@@ -2,6 +2,7 @@ package com.example.mapapp.markers
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mapapp.common.controlflow.SingleLaunch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,10 +15,16 @@ class MarkersViewModel @Inject constructor(
     private val markersGetter: MarkersGetter
 ) : ViewModel() {
 
+    private val onlyLaunch = SingleLaunch()
+
+    fun loadOnLaunch() = onlyLaunch {
+        getMarkers()
+    }
+
     private val _markers = MutableStateFlow<List<Marker>>(listOf())
     val markers: StateFlow<List<Marker>> = _markers.asStateFlow()
 
-    fun getMarkers() = viewModelScope.launch {
+    private fun getMarkers() = viewModelScope.launch {
         markersGetter().collect { it -> _markers.tryEmit(it) }
     }
 }
