@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MapViewModel @Inject constructor(
-private val coordinatesGetter: CoordinatesGetter
+    private val coordinatesGetter: CoordinatesGetter
 ) : ViewModel() {
 
     private val _coordinate = MutableStateFlow(Coordinate(0.0, 0.0))
@@ -33,7 +33,7 @@ private val coordinatesGetter: CoordinatesGetter
     }
 
     private fun getCoordinates() = viewModelScope.launch {
-        _coordinatesList.tryEmit(coordinatesGetter())
+        coordinatesGetter().collect { it -> _coordinatesList.tryEmit(it) }
     }
 
     fun setCoordinate(coordinate: Coordinate) {

@@ -1,5 +1,6 @@
 package com.example.mapapp.common.coordinate
 
+import com.example.mapapp.common.storages.CoordinateDao
 import com.example.mapapp.common.usecases.CoordinateSetter
 import com.example.mapapp.common.usecases.CoordinateSetterImpl
 import com.example.mapapp.common.usecases.CoordinatesGetter
@@ -16,7 +17,8 @@ class CoordinatesModule {
 
     @Provides
     @Singleton
-    fun provideCoordinateRepository(): CoordinateRepository = CoordinateRepositoryImpl()
+    fun provideCoordinateRepository(coordinateDao: CoordinateDao): CoordinateRepository =
+        CoordinateRepositoryImpl(coordinateDao)
 
     @Provides
     @Singleton

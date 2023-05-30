@@ -1,7 +1,6 @@
 package com.example.mapapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
@@ -62,7 +61,6 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
 
     private fun setupMarkers() {
         viewModel.coordinatesList.observe(viewLifecycleOwner) {
-            Log.d("Coordinates", "List: $it")
             it.forEach { coordinate ->
                 createMarker(coordinate)
             }
