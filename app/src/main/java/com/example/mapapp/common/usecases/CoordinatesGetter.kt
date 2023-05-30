@@ -13,6 +13,4 @@ class CoordinatesGetterImpl @Inject constructor(
     private val repository: CoordinateRepository
 ) : CoordinatesGetter {
     override suspend fun invoke(): Flow<List<Coordinate>> = repository.getAllCoordinates()
-
-
 }

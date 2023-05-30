@@ -8,7 +8,9 @@ import com.example.mapapp.common.fragments.BindingFragment
 import com.example.mapapp.databinding.FragmentMarkersBinding
 import com.example.mapapp.markers.adapters.MarkersItemDecorator
 import com.example.mapapp.markers.adapters.MarkersRvAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MarkersFragment : BindingFragment<FragmentMarkersBinding>(
     FragmentMarkersBinding::inflate
 ) {
@@ -20,7 +22,7 @@ class MarkersFragment : BindingFragment<FragmentMarkersBinding>(
 
         setupRecyclerView()
 
-        viewModel.loadOnLaunch()
+        viewModel.getMarkers()
     }
 
     private fun setupRecyclerView() = with(binding) {

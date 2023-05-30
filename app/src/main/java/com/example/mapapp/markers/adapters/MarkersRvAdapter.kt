@@ -2,6 +2,7 @@ package com.example.mapapp.markers.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mapapp.databinding.MarkerItemBinding
 import com.example.mapapp.markers.Marker
@@ -34,7 +35,29 @@ class MarkersRvAdapter :
         }
     }
 
-    fun setItems(data: List<Marker>) {
-        markers.addAll(data)
+    fun setItems(newList: List<Marker>) {
+        markers.clear()
+        markers.addAll(newList)
+
+        val result = DiffUtil.calculateDiff(MarkersDiffCallback(markers, newList))
+        result.dispatchUpdatesTo(this)
+    }
+
+    class MarkersDiffCallback(
+        private val oldList: List<Marker>,
+        private val newList: List<Marker>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
     }
 }
