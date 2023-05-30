@@ -10,7 +10,7 @@ import com.example.mapapp.markers.Marker
 class MarkersRvAdapter :
     RecyclerView.Adapter<MarkersRvAdapter.ViewHolder>() {
 
-    private val markers = arrayListOf<Marker>()
+    private var markers = listOf<Marker>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         MarkerItemBinding.inflate(
@@ -36,10 +36,8 @@ class MarkersRvAdapter :
     }
 
     fun setItems(newList: List<Marker>) {
-        markers.clear()
-        markers.addAll(newList)
-
         val result = DiffUtil.calculateDiff(MarkersDiffCallback(markers, newList))
+        markers = newList
         result.dispatchUpdatesTo(this)
     }
 

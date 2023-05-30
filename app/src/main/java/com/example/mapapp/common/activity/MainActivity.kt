@@ -31,17 +31,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navHostFragment: Fragment? =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+        val mapFragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
 
         return when (item.itemId) {
             R.id.save_coordinates -> {
-                val mapFragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
                 if (mapFragment is ToolbarMenuClickListener) {
                     mapFragment.onToolbarMenuItemClicked(item)
                 }
                 true
             }
             R.id.markers_list -> {
-                navigation.navigate(R.id.action_mapFragment_to_markersFragment)
+                if (mapFragment is ToolbarMenuClickListener) {
+                    navigation.navigate(R.id.action_mapFragment_to_markersFragment)
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
