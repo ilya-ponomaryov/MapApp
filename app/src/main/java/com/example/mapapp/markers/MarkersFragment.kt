@@ -21,8 +21,7 @@ class MarkersFragment : BindingFragment<FragmentMarkersBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
-
-        viewModel.getMarkers()
+        viewModel.loadOnLaunch()
     }
 
     private fun setupRecyclerView() = with(binding) {
