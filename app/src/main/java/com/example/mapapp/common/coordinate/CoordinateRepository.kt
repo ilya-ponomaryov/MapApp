@@ -30,6 +30,6 @@ class CoordinateRepositoryImpl @Inject constructor(
     }
 }
 
-fun Coordinate.toCoordinateEntity() = CoordinateEntity(latitude, longitude)
+fun Coordinate.toCoordinateEntity() = CoordinateEntity(latitude = latitude, longitude = longitude)
 
 fun CoordinateEntity.toCoordinate() = Coordinate(latitude, longitude)
