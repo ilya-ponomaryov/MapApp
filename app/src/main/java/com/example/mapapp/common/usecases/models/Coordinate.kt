@@ -1,4 +1,4 @@
-package com.example.mapapp
+package com.example.mapapp.common.usecases.models
 
 data class Coordinate(
     val latitude: Double,

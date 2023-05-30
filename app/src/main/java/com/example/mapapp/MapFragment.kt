@@ -1,13 +1,18 @@
 package com.example.mapapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.example.mapapp.common.ToolbarMenuClickListener
+import com.example.mapapp.common.coordinate.DialogDismissListener
+import com.example.mapapp.common.coordinate.ToolbarMenuClickListener
+import com.example.mapapp.common.flow.observe
 import com.example.mapapp.common.fragments.BindingFragment
+import com.example.mapapp.common.usecases.models.Coordinate
+import com.example.mapapp.coordinates.CoordinatesDialogFragment
 import com.example.mapapp.databinding.FragmentMapBinding
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
@@ -19,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MapFragment : BindingFragment<FragmentMapBinding>(
     FragmentMapBinding::inflate
-), ToolbarMenuClickListener {
+), ToolbarMenuClickListener, DialogDismissListener {
 
     private val viewModel: MapViewModel by viewModels()
 
@@ -34,8 +39,12 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         navigation = findNavController()
+
         setupMap()
+        setupMarkers()
+        viewModel.loadOnLaunch()
     }
 
     private fun setupMap() = with(binding) {
@@ -49,6 +58,12 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
         )
     }
 
+    private fun setupMarkers() {
+        viewModel.coordinatesList.observe(viewLifecycleOwner) {
+            Log.d("Coordinates", "List: $it")
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         observeCameraMove()
@@ -56,7 +71,7 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
 
     private fun observeCameraMove() {
         cameraListener = CameraListener { _, cameraPosition, _, _ ->
-            viewModel.setCoordinates(
+            viewModel.setCoordinate(
                 Coordinate(
                     cameraPosition.target.latitude, cameraPosition.target.longitude
                 )
@@ -78,10 +93,13 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
     }
 
     override fun onToolbarMenuItemClicked(item: MenuItem) {
-        navigation.navigate(
-            R.id.action_mapFragment_to_coordinatesDialogFragment,
-            viewModel.getBundle()
-        )
+       val dialog = CoordinatesDialogFragment()
+        dialog.arguments = viewModel.getBundle()
+        dialog.show(parentFragmentManager)
+    }
+
+    override fun onDialogDismissed() {
+        viewModel.updateLocations()
     }
 
     override fun onDestroy() {

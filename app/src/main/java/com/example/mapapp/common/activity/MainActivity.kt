@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.mapapp.R
-import com.example.mapapp.common.ToolbarMenuClickListener
+import com.example.mapapp.common.coordinate.ToolbarMenuClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

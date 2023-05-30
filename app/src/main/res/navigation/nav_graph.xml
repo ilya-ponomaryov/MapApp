@@ -9,20 +9,6 @@
         android:id="@+id/mapFragment"
         android:name="com.example.mapapp.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map">
-        <action
-            android:id="@+id/action_mapFragment_to_coordinatesDialogFragment"
-            app:destination="@id/coordinatesDialogFragment" />
-    </fragment>
-    <dialog
-        android:id="@+id/coordinatesDialogFragment"
-        android:name="com.example.mapapp.coordinatesdialog.CoordinatesDialogFragment"
-        android:label="CoordinatesDialogFragment">
-        <argument
-            android:name="latitude"
-            app:argType="string" />
-        <argument
-            android:name="longitude"
-            app:argType="string" />
-    </dialog>
+        tools:layout="@layout/fragment_map"/>
+
 </navigation>
