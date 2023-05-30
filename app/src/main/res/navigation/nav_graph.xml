@@ -9,6 +9,15 @@
         android:id="@+id/mapFragment"
         android:name="com.example.mapapp.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map"/>
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_mapFragment_to_markersFragment"
+            app:destination="@id/markersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/markersFragment"
+        android:name="com.example.mapapp.markers.MarkersFragment"
+        android:label="fragment_markers"
+        tools:layout="@layout/fragment_markers" />
 
 </navigation>

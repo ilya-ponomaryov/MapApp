@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
+            R.id.markers_list -> {
+                navigation.navigate(R.id.action_mapFragment_to_markersFragment)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
