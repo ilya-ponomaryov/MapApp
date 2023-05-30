@@ -52,7 +52,8 @@ class CoordinatesViewModel @Inject constructor(
     }
 
     fun latitudeDoAfterTextChanged(latitude: String) {
-        if (!validateLatitude(latitude.toDouble())) {
+        val latitudeDouble = latitude.toDoubleOrNull()
+        if (!validateLatitude(latitudeDouble)) {
             _toastMessage.tryEmit("Широта введена неверно!")
             _dismissDialog.value = false
         } else {
@@ -61,7 +62,8 @@ class CoordinatesViewModel @Inject constructor(
     }
 
     fun longitudeDoAfterTextChanged(longitude: String) {
-        if (!validateLongitude(longitude.toDouble())) {
+        val longitudeDouble = longitude.toDoubleOrNull()
+        if (!validateLongitude(longitudeDouble)) {
             _toastMessage.tryEmit("Долгота введена неверно!")
             _dismissDialog.value = false
         } else {
@@ -82,16 +84,26 @@ class CoordinatesViewModel @Inject constructor(
         _dismissDialog.value = true
     }
 
-    private fun validateLatitude(latitude: Double): Boolean {
-        val isValid = latitude in -90.0..90.0
-        _isValidLatitude.value = isValid
-        return isValid
+    private fun validateLatitude(latitude: Double?): Boolean {
+        return if (latitude != null) {
+            val isValid = latitude in -90.0..90.0
+            _isValidLatitude.value = isValid
+            isValid
+        } else {
+            _isValidLatitude.value = false
+            false
+        }
 
     }
 
-    private fun validateLongitude(longitude: Double): Boolean {
-        val isValid = longitude in -180.0..180.0
-        _isValidLongitude.value = isValid
-        return isValid
+    private fun validateLongitude(longitude: Double?): Boolean {
+        return if (longitude != null) {
+            val isValid = longitude in -180.0..180.0
+            _isValidLongitude.value = isValid
+            isValid
+        } else {
+            _isValidLongitude.value = false
+            false
+        }
     }
 }
