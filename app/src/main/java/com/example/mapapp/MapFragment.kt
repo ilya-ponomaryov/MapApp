@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,7 @@ import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraListener
 import com.yandex.mapkit.map.CameraPosition
+import com.yandex.runtime.ui_view.ViewProvider
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -61,7 +63,24 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
     private fun setupMarkers() {
         viewModel.coordinatesList.observe(viewLifecycleOwner) {
             Log.d("Coordinates", "List: $it")
+            it.forEach { coordinate ->
+                createMarker(coordinate)
+            }
         }
+    }
+
+    private fun createMarker(coordinate: Coordinate) {
+        val view = View(requireContext()).apply {
+            background = AppCompatResources.getDrawable(
+                context, R.drawable.baseline_location_on_24
+            )
+        }
+
+        binding.mapView.map.mapObjects.addPlacemark(
+            Point(coordinate.latitude, coordinate.longitude),
+            ViewProvider(view)
+        )
+
     }
 
     override fun onResume() {
@@ -93,7 +112,7 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
     }
 
     override fun onToolbarMenuItemClicked(item: MenuItem) {
-       val dialog = CoordinatesDialogFragment()
+        val dialog = CoordinatesDialogFragment()
         dialog.arguments = viewModel.getBundle()
         dialog.show(parentFragmentManager)
     }
