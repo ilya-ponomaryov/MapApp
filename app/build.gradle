@@ -50,7 +50,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
@@ -71,5 +70,18 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    //tests
+    def jUnitVersion = "4.13.2"
+    def androidXTestVersion = "4.10.3"
+    def mockitoVersion = "5.3.1"
+    def mockitoKotlinVersion = "4.1.0"
+    def mockkVersion = "1.13.5"
+
+    testImplementation "junit:junit:$jUnitVersion"
+    testImplementation "androidx.test:core:$androidXTestVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "io.mockk:mockk:$mockkVersion"
 
 }
