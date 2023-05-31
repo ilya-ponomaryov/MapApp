@@ -1,4 +1,4 @@
-package com.example.mapapp
+package com.example.mapapp.map
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,11 +7,12 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.example.mapapp.common.coordinate.DialogDismissListener
-import com.example.mapapp.common.coordinate.ToolbarMenuClickListener
+import com.example.mapapp.R
+import com.example.mapapp.common.listeners.DialogDismissListener
+import com.example.mapapp.common.listeners.ToolbarMenuClickListener
 import com.example.mapapp.common.flow.observe
 import com.example.mapapp.common.fragments.BindingFragment
-import com.example.mapapp.common.usecases.models.Coordinate
+import com.example.mapapp.common.usecases.coordinates.models.Coordinate
 import com.example.mapapp.coordinates.CoordinatesDialogFragment
 import com.example.mapapp.databinding.FragmentMapBinding
 import com.yandex.mapkit.Animation

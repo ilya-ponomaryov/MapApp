@@ -1,12 +1,12 @@
-package com.example.mapapp
+package com.example.mapapp.map
 
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mapapp.common.controlflow.SingleLaunch
-import com.example.mapapp.common.usecases.CoordinatesGetter
-import com.example.mapapp.common.usecases.models.Coordinate
+import com.example.mapapp.common.usecases.coordinates.CoordinatesGetter
+import com.example.mapapp.common.usecases.coordinates.models.Coordinate
 import com.example.mapapp.coordinates.CoordinatesDialogFragment.Companion.ARG_LATITUDE
 import com.example.mapapp.coordinates.CoordinatesDialogFragment.Companion.ARG_LONGITUDE
 import dagger.hilt.android.lifecycle.HiltViewModel

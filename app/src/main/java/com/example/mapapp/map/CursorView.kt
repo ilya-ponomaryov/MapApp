@@ -1,4 +1,4 @@
-package com.example.mapapp
+package com.example.mapapp.map
 
 import android.content.Context
 import android.graphics.Canvas

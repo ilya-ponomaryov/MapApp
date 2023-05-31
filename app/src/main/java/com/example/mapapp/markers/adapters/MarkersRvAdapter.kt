@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mapapp.databinding.MarkerItemBinding
-import com.example.mapapp.markers.Marker
+import com.example.mapapp.markers.models.Marker
 
 class MarkersRvAdapter :
     RecyclerView.Adapter<MarkersRvAdapter.ViewHolder>() {

@@ -9,7 +9,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
-import com.example.mapapp.common.coordinate.DialogDismissListener
+import com.example.mapapp.common.listeners.DialogDismissListener
 import com.example.mapapp.common.flow.observe
 import com.example.mapapp.common.fragments.showToast
 import com.example.mapapp.databinding.FragmentCoordinatesBinding

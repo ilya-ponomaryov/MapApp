@@ -1,7 +1,7 @@
-package com.example.mapapp.common.coordinate
+package com.example.mapapp.common.usecases.coordinates
 
 import com.example.mapapp.common.storages.CoordinateDao
-import com.example.mapapp.common.usecases.models.Coordinate
+import com.example.mapapp.common.usecases.coordinates.models.Coordinate
 import com.example.mapapp.common.storages.models.CoordinateEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

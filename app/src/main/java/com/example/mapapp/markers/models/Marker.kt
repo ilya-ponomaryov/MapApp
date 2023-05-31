@@ -1,4 +1,4 @@
-package com.example.mapapp.markers
+package com.example.mapapp.markers.models
 
 data class Marker(
     val name: String,

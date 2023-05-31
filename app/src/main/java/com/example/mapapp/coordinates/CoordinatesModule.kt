@@ -1,10 +1,12 @@
-package com.example.mapapp.common.coordinate
+package com.example.mapapp.coordinates
 
+import com.example.mapapp.common.usecases.coordinates.CoordinateRepository
+import com.example.mapapp.common.usecases.coordinates.CoordinateRepositoryImpl
 import com.example.mapapp.common.storages.CoordinateDao
-import com.example.mapapp.common.usecases.CoordinateSetter
-import com.example.mapapp.common.usecases.CoordinateSetterImpl
-import com.example.mapapp.common.usecases.CoordinatesGetter
-import com.example.mapapp.common.usecases.CoordinatesGetterImpl
+import com.example.mapapp.coordinates.usecases.CoordinateSetter
+import com.example.mapapp.coordinates.usecases.CoordinateSetterImpl
+import com.example.mapapp.common.usecases.coordinates.CoordinatesGetter
+import com.example.mapapp.common.usecases.coordinates.CoordinatesGetterImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

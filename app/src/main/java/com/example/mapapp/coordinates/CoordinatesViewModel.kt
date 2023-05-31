@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mapapp.common.controlflow.SingleLaunch
 import com.example.mapapp.common.flow.MutableSingleEventFlow
-import com.example.mapapp.common.usecases.CoordinateSetter
-import com.example.mapapp.common.usecases.models.Coordinate
+import com.example.mapapp.common.usecases.coordinates.models.Coordinate
+import com.example.mapapp.coordinates.usecases.CoordinateSetter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow

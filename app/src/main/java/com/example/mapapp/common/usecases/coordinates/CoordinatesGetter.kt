@@ -1,7 +1,6 @@
-package com.example.mapapp.common.usecases
+package com.example.mapapp.common.usecases.coordinates
 
-import com.example.mapapp.common.usecases.models.Coordinate
-import com.example.mapapp.common.coordinate.CoordinateRepository
+import com.example.mapapp.common.usecases.coordinates.models.Coordinate
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

@@ -1,7 +1,7 @@
-package com.example.mapapp.common.usecases
+package com.example.mapapp.coordinates.usecases
 
-import com.example.mapapp.common.coordinate.CoordinateRepository
-import com.example.mapapp.common.usecases.models.Coordinate
+import com.example.mapapp.common.usecases.coordinates.CoordinateRepository
+import com.example.mapapp.common.usecases.coordinates.models.Coordinate
 import javax.inject.Inject
 
 interface CoordinateSetter {

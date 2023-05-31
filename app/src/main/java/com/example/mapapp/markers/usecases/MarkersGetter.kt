@@ -1,5 +1,6 @@
-package com.example.mapapp.markers
+package com.example.mapapp.markers.usecases
 
+import com.example.mapapp.markers.models.Marker
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

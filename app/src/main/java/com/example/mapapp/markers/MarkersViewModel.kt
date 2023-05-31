@@ -3,6 +3,8 @@ package com.example.mapapp.markers
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mapapp.common.controlflow.SingleLaunch
+import com.example.mapapp.markers.models.Marker
+import com.example.mapapp.markers.usecases.MarkersGetter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

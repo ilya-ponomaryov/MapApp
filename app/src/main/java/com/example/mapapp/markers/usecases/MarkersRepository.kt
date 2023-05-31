@@ -1,7 +1,8 @@
-package com.example.mapapp.markers
+package com.example.mapapp.markers.usecases
 
 import com.example.mapapp.common.storages.CoordinateDao
 import com.example.mapapp.common.storages.models.CoordinateEntity
+import com.example.mapapp.markers.models.Marker
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

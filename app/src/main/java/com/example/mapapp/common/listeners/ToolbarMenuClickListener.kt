@@ -1,4 +1,4 @@
-package com.example.mapapp.common.coordinate
+package com.example.mapapp.common.listeners
 
 import android.view.MenuItem
 
