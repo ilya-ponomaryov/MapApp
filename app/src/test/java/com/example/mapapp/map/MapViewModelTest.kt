@@ -1,29 +1,21 @@
 package com.example.mapapp.map
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.mapapp.common.usecases.coordinates.CoordinatesGetter
 import com.example.mapapp.common.usecases.coordinates.models.Coordinate
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
+import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.*
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
 
-@FlowPreview
-@ExperimentalCoroutinesApi
 class MapViewModelTest {
-
-    @get:Rule
-    val rule = InstantTaskExecutorRule()
 
     private lateinit var viewModel: MapViewModel
 
@@ -50,6 +42,11 @@ class MapViewModelTest {
     fun cleanup() {
         Dispatchers.resetMain()
         testCoroutineScope.cleanupTestCoroutines()
+    }
+
+    @Test
+    fun `coordinates list should be empty initially`() {
+        TestCase.assertTrue(viewModel.coordinatesList.value.isEmpty())
     }
 
     @Test
