@@ -1,7 +1,7 @@
-package com.example.mapapp.markers.usecases
+package com.example.mapapp.markers
 
-import com.example.mapapp.markers.MarkersViewModel
 import com.example.mapapp.markers.models.Marker
+import com.example.mapapp.markers.usecases.MarkersGetter
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.mockk
