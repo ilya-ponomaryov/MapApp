@@ -25,10 +25,8 @@ class CoordinatesViewModel @Inject constructor(
     val longitude = _longitude.asStateFlow()
 
     private var _isValidLatitude = MutableStateFlow(false)
-    val isValidLatitude = _isValidLatitude
 
     private var _isValidLongitude = MutableStateFlow(false)
-    val isValidLongitude = _isValidLongitude
 
     private var _dismissDialog = MutableStateFlow(false)
     val dismissDialog = _dismissDialog
@@ -72,7 +70,7 @@ class CoordinatesViewModel @Inject constructor(
     }
 
     fun onSaveButtonClicked() {
-        if (isValidLatitude.value && isValidLongitude.value)
+        if (_isValidLatitude.value && _isValidLongitude.value)
             saveCoordinate()
         else
             _toastMessage.tryEmit("Данные введены неверно. Сохранение недоступно!")
