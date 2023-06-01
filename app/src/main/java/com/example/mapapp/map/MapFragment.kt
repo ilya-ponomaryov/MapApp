@@ -122,7 +122,6 @@ class MapFragment : BindingFragment<FragmentMapBinding>(
 
     override fun onDestroy() {
         super.onDestroy()
-        binding.mapView.map.removeCameraListener(cameraListener)
         MapKitFactory.getInstance().onStop()
     }
 }
