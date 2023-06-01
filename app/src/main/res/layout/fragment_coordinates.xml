@@ -28,8 +28,8 @@
             android:id="@+id/latitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:digits="0123456789.-"
+            android:textSize="16sp"
             tools:text="59.945933°" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,8 +47,8 @@
             android:id="@+id/longitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:digits="0123456789.-"
+            android:textSize="16sp"
             tools:text="30.320045°" />
     </com.google.android.material.textfield.TextInputLayout>
 
