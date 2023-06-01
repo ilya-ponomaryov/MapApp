@@ -13,6 +13,4 @@ class CoordinateSetterImpl @Inject constructor(
 ) : CoordinateSetter {
     override suspend fun invoke(coordinate: Coordinate) =
         coordinateRepository.saveCoordinate(coordinate)
-
-
 }

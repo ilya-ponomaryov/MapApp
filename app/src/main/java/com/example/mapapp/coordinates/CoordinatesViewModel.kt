@@ -59,6 +59,17 @@ class CoordinatesViewModel @Inject constructor(
         }
     }
 
+    private fun validateLatitude(latitude: Double?): Boolean {
+        return if (latitude != null) {
+            val isValid = latitude in -90.0..90.0
+            _isValidLatitude.value = isValid
+            isValid
+        } else {
+            _isValidLatitude.value = false
+            false
+        }
+    }
+
     fun longitudeDoAfterTextChanged(longitude: String) {
         val longitudeDouble = longitude.toDoubleOrNull()
         if (!validateLongitude(longitudeDouble)) {
@@ -66,6 +77,17 @@ class CoordinatesViewModel @Inject constructor(
             _dismissDialog.value = false
         } else {
             _longitude.value = longitude.toDouble()
+        }
+    }
+
+    private fun validateLongitude(longitude: Double?): Boolean {
+        return if (longitude != null) {
+            val isValid = longitude in -180.0..180.0
+            _isValidLongitude.value = isValid
+            isValid
+        } else {
+            _isValidLongitude.value = false
+            false
         }
     }
 
@@ -80,28 +102,5 @@ class CoordinatesViewModel @Inject constructor(
     private fun saveCoordinate() = viewModelScope.launch {
         setCoordinate(Coordinate(latitude.value, longitude.value))
         _dismissDialog.value = true
-    }
-
-    private fun validateLatitude(latitude: Double?): Boolean {
-        return if (latitude != null) {
-            val isValid = latitude in -90.0..90.0
-            _isValidLatitude.value = isValid
-            isValid
-        } else {
-            _isValidLatitude.value = false
-            false
-        }
-
-    }
-
-    private fun validateLongitude(longitude: Double?): Boolean {
-        return if (longitude != null) {
-            val isValid = longitude in -180.0..180.0
-            _isValidLongitude.value = isValid
-            isValid
-        } else {
-            _isValidLongitude.value = false
-            false
-        }
     }
 }

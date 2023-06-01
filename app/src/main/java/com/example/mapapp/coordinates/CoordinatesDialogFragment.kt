@@ -44,9 +44,9 @@ class CoordinatesDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupCoordinatesFields()
-        setupSaveButton()
         observeLatitudeText()
         observeLongitudeText()
+        setupSaveButton()
 
         viewModel.toastMessage.observe(viewLifecycleOwner, observer = ::showToast)
         viewModel.dismissDialog.observe(viewLifecycleOwner) { if (it) dismiss() }
@@ -61,12 +61,6 @@ class CoordinatesDialogFragment : DialogFragment() {
         longitude.setText(longitudeArgs)
     }
 
-    private fun setupSaveButton() {
-        binding.save.setOnClickListener {
-            viewModel.onSaveButtonClicked()
-        }
-    }
-
     private fun observeLatitudeText() = with(binding) {
         latitude.doAfterTextChanged {
             viewModel.latitudeDoAfterTextChanged(it.toString())
@@ -76,6 +70,12 @@ class CoordinatesDialogFragment : DialogFragment() {
     private fun observeLongitudeText() = with(binding) {
         longitude.doAfterTextChanged {
             viewModel.longitudeDoAfterTextChanged(it.toString())
+        }
+    }
+
+    private fun setupSaveButton() {
+        binding.save.setOnClickListener {
+            viewModel.onSaveButtonClicked()
         }
     }
 
